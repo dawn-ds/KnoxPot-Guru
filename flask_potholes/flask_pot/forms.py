@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, FloatField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, FloatField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, NumberRange
 
 
@@ -18,3 +18,16 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password')
     #remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+
+
+class DriverForm(FlaskForm):
+    pothole_number = IntegerField('WO-ID', default=100)
+    submitroute = SubmitField('Get Route')
+    submitcompleted = SubmitField('Completed route')
+
+
+class PotholeCompletedForm(FlaskForm):
+    pothole_number = StringField('WO-ID', validators=[DataRequired()])
+    submit = SubmitField('Completed Pothole')
+
+
